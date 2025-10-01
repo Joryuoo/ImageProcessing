@@ -8,21 +8,28 @@ It’s written in C# with the .NET Framework, and the interface uses WinForms. I
 
 ## ✨ What it can do
 
-### 🖼️ Basic Image Manipulation
+### 🖼️ Image Manipulation
 
-* **Copy** – Duplicate the original image
-* **Invert** – Apply color inversion
-* **Greyscale** – Convert to black & white shades
-* **Sepia** – Add a warm, vintage effect
-* **Histogram** – Generate and display histogram visualization
-* **Save Output** – Export the processed image
+* Copy, Invert, Greyscale, Sepia
+* Histogram visualization
+* Save processed image
 
 ### 🔄 Image Subtraction
 
-* Load **two images** (foreground and background)
-* Perform subtraction between them
-* Save the resulting image
+* Load two images (foreground & background)
+* Subtract and save result
 
+### 🎛️ Convolution Matrix Filters
+
+* Smooth, Gaussian Blur, Sharpen, Mean Removal
+* Laplacian & Emboss filters (Horizontal/Vertical/All Directions, Lossy)
+* Apply to loaded images or live webcam feed
+
+### 📷 Webcam Support
+
+* Toggle webcam input
+* See live processed output with selected filter
+  
 ---
 
 ## 🛠️ Built With
