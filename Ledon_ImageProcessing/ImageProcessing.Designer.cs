@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cb_fastmode = new System.Windows.Forms.CheckBox();
+            this.cb_EnableWebCam = new System.Windows.Forms.CheckBox();
             this.btn_clear = new System.Windows.Forms.Button();
             this.lb_tabPageLabel = new System.Windows.Forms.Label();
             this.btn_sepia = new System.Windows.Forms.Button();
@@ -56,6 +58,28 @@
             this.pb_backgroundImage = new System.Windows.Forms.PictureBox();
             this.pb_foregroundImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cb_convMatrixWebcamToggle = new System.Windows.Forms.CheckBox();
+            this.pb_convMatrixOuptut = new System.Windows.Forms.PictureBox();
+            this.pb_convMatrixInput = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.smoothToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gaussianBLurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sharpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.meanRemovalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.embossToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laplasianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horzVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allDirectionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lossyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_saveMedia = new System.Windows.Forms.Button();
+            this.btn_loadMedia = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_outputImage)).BeginInit();
@@ -64,20 +88,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_subtractedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_backgroundImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_foregroundImage)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_convMatrixOuptut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_convMatrixInput)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(0, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1142, 731);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cb_fastmode);
+            this.tabPage1.Controls.Add(this.cb_EnableWebCam);
             this.tabPage1.Controls.Add(this.btn_clear);
             this.tabPage1.Controls.Add(this.lb_tabPageLabel);
             this.tabPage1.Controls.Add(this.btn_sepia);
@@ -98,6 +130,28 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Basic Image Manipulation";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cb_fastmode
+            // 
+            this.cb_fastmode.AutoSize = true;
+            this.cb_fastmode.Location = new System.Drawing.Point(246, 565);
+            this.cb_fastmode.Name = "cb_fastmode";
+            this.cb_fastmode.Size = new System.Drawing.Size(93, 20);
+            this.cb_fastmode.TabIndex = 14;
+            this.cb_fastmode.Text = "Fast Mode";
+            this.cb_fastmode.UseVisualStyleBackColor = true;
+            this.cb_fastmode.CheckedChanged += new System.EventHandler(this.cb_fastmode_CheckedChanged);
+            // 
+            // cb_EnableWebCam
+            // 
+            this.cb_EnableWebCam.AutoSize = true;
+            this.cb_EnableWebCam.Location = new System.Drawing.Point(246, 539);
+            this.cb_EnableWebCam.Name = "cb_EnableWebCam";
+            this.cb_EnableWebCam.Size = new System.Drawing.Size(132, 20);
+            this.cb_EnableWebCam.TabIndex = 13;
+            this.cb_EnableWebCam.Text = "Enable WebCam";
+            this.cb_EnableWebCam.UseVisualStyleBackColor = true;
+            this.cb_EnableWebCam.CheckedChanged += new System.EventHandler(this.cb_EnableWebCam_CheckedChanged);
             // 
             // btn_clear
             // 
@@ -184,7 +238,7 @@
             this.btn_saveImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_saveImage.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_saveImage.ForeColor = System.Drawing.Color.White;
-            this.btn_saveImage.Location = new System.Drawing.Point(737, 516);
+            this.btn_saveImage.Location = new System.Drawing.Point(720, 475);
             this.btn_saveImage.Name = "btn_saveImage";
             this.btn_saveImage.Size = new System.Drawing.Size(166, 47);
             this.btn_saveImage.TabIndex = 5;
@@ -198,7 +252,7 @@
             this.btn_loadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_loadImage.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_loadImage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_loadImage.Location = new System.Drawing.Point(224, 516);
+            this.btn_loadImage.Location = new System.Drawing.Point(232, 475);
             this.btn_loadImage.Name = "btn_loadImage";
             this.btn_loadImage.Size = new System.Drawing.Size(166, 47);
             this.btn_loadImage.TabIndex = 4;
@@ -209,18 +263,18 @@
             // pb_outputImage
             // 
             this.pb_outputImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb_outputImage.Location = new System.Drawing.Point(591, 110);
+            this.pb_outputImage.Location = new System.Drawing.Point(630, 110);
             this.pb_outputImage.Name = "pb_outputImage";
-            this.pb_outputImage.Size = new System.Drawing.Size(444, 400);
+            this.pb_outputImage.Size = new System.Drawing.Size(350, 350);
             this.pb_outputImage.TabIndex = 3;
             this.pb_outputImage.TabStop = false;
             // 
             // pb_inputImage
             // 
             this.pb_inputImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb_inputImage.Location = new System.Drawing.Point(88, 110);
+            this.pb_inputImage.Location = new System.Drawing.Point(149, 110);
             this.pb_inputImage.Name = "pb_inputImage";
-            this.pb_inputImage.Size = new System.Drawing.Size(444, 400);
+            this.pb_inputImage.Size = new System.Drawing.Size(350, 350);
             this.pb_inputImage.TabIndex = 2;
             this.pb_inputImage.TabStop = false;
             // 
@@ -403,12 +457,231 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Image Subtraction";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.btn_saveMedia);
+            this.tabPage3.Controls.Add(this.btn_loadMedia);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.cb_convMatrixWebcamToggle);
+            this.tabPage3.Controls.Add(this.pb_convMatrixOuptut);
+            this.tabPage3.Controls.Add(this.pb_convMatrixInput);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.menuStrip1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1134, 702);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Convolution Matrix";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Roboto Lt", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(404, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(328, 34);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "DIP Convolution Matrix";
+            // 
+            // cb_convMatrixWebcamToggle
+            // 
+            this.cb_convMatrixWebcamToggle.AutoSize = true;
+            this.cb_convMatrixWebcamToggle.Location = new System.Drawing.Point(250, 614);
+            this.cb_convMatrixWebcamToggle.Name = "cb_convMatrixWebcamToggle";
+            this.cb_convMatrixWebcamToggle.Size = new System.Drawing.Size(132, 20);
+            this.cb_convMatrixWebcamToggle.TabIndex = 14;
+            this.cb_convMatrixWebcamToggle.Text = "Enable WebCam";
+            this.cb_convMatrixWebcamToggle.UseVisualStyleBackColor = true;
+            this.cb_convMatrixWebcamToggle.CheckedChanged += new System.EventHandler(this.cb_convMatrixWebcamToggle_CheckedChanged);
+            // 
+            // pb_convMatrixOuptut
+            // 
+            this.pb_convMatrixOuptut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_convMatrixOuptut.Location = new System.Drawing.Point(627, 146);
+            this.pb_convMatrixOuptut.Name = "pb_convMatrixOuptut";
+            this.pb_convMatrixOuptut.Size = new System.Drawing.Size(400, 400);
+            this.pb_convMatrixOuptut.TabIndex = 7;
+            this.pb_convMatrixOuptut.TabStop = false;
+            // 
+            // pb_convMatrixInput
+            // 
+            this.pb_convMatrixInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_convMatrixInput.Location = new System.Drawing.Point(106, 146);
+            this.pb_convMatrixInput.Name = "pb_convMatrixInput";
+            this.pb_convMatrixInput.Size = new System.Drawing.Size(400, 400);
+            this.pb_convMatrixInput.TabIndex = 6;
+            this.pb_convMatrixInput.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(803, 107);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 24);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Output";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(281, 107);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 24);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Input";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.smoothToolStripMenuItem,
+            this.gaussianBLurToolStripMenuItem,
+            this.sharpenToolStripMenuItem,
+            this.meanRemovalToolStripMenuItem,
+            this.embossToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1134, 28);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // smoothToolStripMenuItem
+            // 
+            this.smoothToolStripMenuItem.Name = "smoothToolStripMenuItem";
+            this.smoothToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.smoothToolStripMenuItem.Text = "Smooth";
+            this.smoothToolStripMenuItem.Click += new System.EventHandler(this.smoothToolStripMenuItem_Click);
+            // 
+            // gaussianBLurToolStripMenuItem
+            // 
+            this.gaussianBLurToolStripMenuItem.Name = "gaussianBLurToolStripMenuItem";
+            this.gaussianBLurToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.gaussianBLurToolStripMenuItem.Text = "Gaussian BLur";
+            this.gaussianBLurToolStripMenuItem.Click += new System.EventHandler(this.gaussianBLurToolStripMenuItem_Click);
+            // 
+            // sharpenToolStripMenuItem
+            // 
+            this.sharpenToolStripMenuItem.Name = "sharpenToolStripMenuItem";
+            this.sharpenToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.sharpenToolStripMenuItem.Text = "Sharpen";
+            this.sharpenToolStripMenuItem.Click += new System.EventHandler(this.sharpenToolStripMenuItem_Click);
+            // 
+            // meanRemovalToolStripMenuItem
+            // 
+            this.meanRemovalToolStripMenuItem.Name = "meanRemovalToolStripMenuItem";
+            this.meanRemovalToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.meanRemovalToolStripMenuItem.Text = "Mean Removal";
+            this.meanRemovalToolStripMenuItem.Click += new System.EventHandler(this.meanRemovalToolStripMenuItem_Click);
+            // 
+            // embossToolStripMenuItem
+            // 
+            this.embossToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.laplasianToolStripMenuItem,
+            this.horzVerticalToolStripMenuItem,
+            this.allDirectionsToolStripMenuItem,
+            this.lossyToolStripMenuItem,
+            this.horizonToolStripMenuItem,
+            this.verticalOnlyToolStripMenuItem});
+            this.embossToolStripMenuItem.Name = "embossToolStripMenuItem";
+            this.embossToolStripMenuItem.Size = new System.Drawing.Size(95, 24);
+            this.embossToolStripMenuItem.Text = "Embossing";
+            // 
+            // laplasianToolStripMenuItem
+            // 
+            this.laplasianToolStripMenuItem.Name = "laplasianToolStripMenuItem";
+            this.laplasianToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.laplasianToolStripMenuItem.Text = "Laplasian";
+            this.laplasianToolStripMenuItem.Click += new System.EventHandler(this.laplasianToolStripMenuItem_Click);
+            // 
+            // horzVerticalToolStripMenuItem
+            // 
+            this.horzVerticalToolStripMenuItem.Name = "horzVerticalToolStripMenuItem";
+            this.horzVerticalToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.horzVerticalToolStripMenuItem.Text = "Horz/Vertical";
+            this.horzVerticalToolStripMenuItem.Click += new System.EventHandler(this.horzVerticalToolStripMenuItem_Click);
+            // 
+            // allDirectionsToolStripMenuItem
+            // 
+            this.allDirectionsToolStripMenuItem.Name = "allDirectionsToolStripMenuItem";
+            this.allDirectionsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.allDirectionsToolStripMenuItem.Text = "All Directions";
+            this.allDirectionsToolStripMenuItem.Click += new System.EventHandler(this.allDirectionsToolStripMenuItem_Click);
+            // 
+            // lossyToolStripMenuItem
+            // 
+            this.lossyToolStripMenuItem.Name = "lossyToolStripMenuItem";
+            this.lossyToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.lossyToolStripMenuItem.Text = "Lossy";
+            this.lossyToolStripMenuItem.Click += new System.EventHandler(this.lossyToolStripMenuItem_Click);
+            // 
+            // horizonToolStripMenuItem
+            // 
+            this.horizonToolStripMenuItem.Name = "horizonToolStripMenuItem";
+            this.horizonToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.horizonToolStripMenuItem.Text = "Horizontal Only";
+            this.horizonToolStripMenuItem.Click += new System.EventHandler(this.horizonToolStripMenuItem_Click);
+            // 
+            // verticalOnlyToolStripMenuItem
+            // 
+            this.verticalOnlyToolStripMenuItem.Name = "verticalOnlyToolStripMenuItem";
+            this.verticalOnlyToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.verticalOnlyToolStripMenuItem.Text = "Vertical Only";
+            this.verticalOnlyToolStripMenuItem.Click += new System.EventHandler(this.verticalOnlyToolStripMenuItem_Click);
+            // 
+            // btn_saveMedia
+            // 
+            this.btn_saveMedia.BackColor = System.Drawing.Color.Green;
+            this.btn_saveMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_saveMedia.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_saveMedia.ForeColor = System.Drawing.Color.White;
+            this.btn_saveMedia.Location = new System.Drawing.Point(723, 561);
+            this.btn_saveMedia.Name = "btn_saveMedia";
+            this.btn_saveMedia.Size = new System.Drawing.Size(166, 47);
+            this.btn_saveMedia.TabIndex = 17;
+            this.btn_saveMedia.Text = "Save Media";
+            this.btn_saveMedia.UseVisualStyleBackColor = false;
+            this.btn_saveMedia.Click += new System.EventHandler(this.btn_saveMedia_Click);
+            // 
+            // btn_loadMedia
+            // 
+            this.btn_loadMedia.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_loadMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_loadMedia.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_loadMedia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_loadMedia.Location = new System.Drawing.Point(235, 561);
+            this.btn_loadMedia.Name = "btn_loadMedia";
+            this.btn_loadMedia.Size = new System.Drawing.Size(166, 47);
+            this.btn_loadMedia.TabIndex = 16;
+            this.btn_loadMedia.Text = "Load Media";
+            this.btn_loadMedia.UseVisualStyleBackColor = false;
+            this.btn_loadMedia.Click += new System.EventHandler(this.btn_loadMedia_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(723, 614);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 47);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ImageProcessing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 733);
             this.Controls.Add(this.tabControl1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "ImageProcessing";
             this.Text = "Ledon - Image Processing";
             this.tabControl1.ResumeLayout(false);
@@ -421,6 +694,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_subtractedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_backgroundImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_foregroundImage)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_convMatrixOuptut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_convMatrixInput)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -455,6 +734,30 @@
         private System.Windows.Forms.Button btn_saveSubtractedImage;
         private System.Windows.Forms.Button btn_subtract;
         private System.Windows.Forms.Button btn_clearImages;
+        private System.Windows.Forms.CheckBox cb_EnableWebCam;
+        private System.Windows.Forms.CheckBox cb_fastmode;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem smoothToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gaussianBLurToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sharpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem meanRemovalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem embossToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem laplasianToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horzVerticalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allDirectionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lossyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalOnlyToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pb_convMatrixOuptut;
+        private System.Windows.Forms.PictureBox pb_convMatrixInput;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox cb_convMatrixWebcamToggle;
+        private System.Windows.Forms.Button btn_saveMedia;
+        private System.Windows.Forms.Button btn_loadMedia;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -19,13 +19,25 @@ namespace Ledon_ImageProcessing
             outputImage = null;
         }
 
+        //private void SetInputImage(Bitmap img)
+        //{
+        //    inputImage = img;
+        //}
+        //private void SetOutputImage(Bitmap img)
+        //{
+        //    outputImage = img;
+        //}
+
         private void SetInputImage(Bitmap img)
         {
-            inputImage = img;
+            if (inputImage != null) inputImage.Dispose();
+            inputImage = (Bitmap)img.Clone(); // always store a clone
         }
+
         private void SetOutputImage(Bitmap img)
         {
-            outputImage = img;
+            if (outputImage != null) outputImage.Dispose();
+            outputImage = (Bitmap)img.Clone(); // always store a clone
         }
 
         public Bitmap LoadImage(string filePath)
@@ -217,6 +229,103 @@ namespace Ledon_ImageProcessing
             }
 
             SetOutputImage(scaledBmp);
+            return outputImage;
+        }
+
+
+
+        //overloaded methods to accept frame hahaha bobo ako ihh sorry 
+
+        public Bitmap CopyImage(Bitmap inputImage)
+        {
+            if (inputImage == null)
+                return null;
+
+            Bitmap bmp = new Bitmap(inputImage.Width, inputImage.Height);
+
+            for (int y = 0; y < inputImage.Height; y++)
+            {
+                for (int x = 0; x < inputImage.Width; x++)
+                {
+                    System.Drawing.Color pixel = inputImage.GetPixel(x, y);
+                    bmp.SetPixel(x, y, pixel);
+                }
+            }
+
+            SetOutputImage(bmp);
+            return outputImage;
+        }
+
+        public Bitmap InvertImage(Bitmap inputImage)
+        {
+            if (inputImage == null)
+                return null;
+
+            Bitmap bmp = new Bitmap(inputImage.Width, inputImage.Height);
+
+            for (int y = 0; y < inputImage.Height; y++)
+            {
+                for (int x = 0; x < inputImage.Width; x++)
+                {
+                    System.Drawing.Color pixel = inputImage.GetPixel(x, y);
+                    int r = 255 - pixel.R;
+                    int g = 255 - pixel.G;
+                    int b = 255 - pixel.B;
+                    bmp.SetPixel(x, y, System.Drawing.Color.FromArgb(r, g, b));
+                }
+            }
+
+            SetOutputImage(bmp);
+            return outputImage;
+        }
+
+        public Bitmap GreyscaleImage(Bitmap inputImage)
+        {
+            if (inputImage == null)
+                return null;
+
+            Bitmap bmp = new Bitmap(inputImage.Width, inputImage.Height);
+
+            for (int y = 0; y < inputImage.Height; y++)
+            {
+                for (int x = 0; x < inputImage.Width; x++)
+                {
+                    System.Drawing.Color pixel = inputImage.GetPixel(x, y);
+                    int gray = (pixel.R + pixel.G + pixel.B) / 3;
+                    bmp.SetPixel(x, y, System.Drawing.Color.FromArgb(gray, gray, gray));
+                }
+            }
+
+            SetOutputImage(bmp);
+            return outputImage;
+        }
+
+        public Bitmap SepiaImage(Bitmap inputImage)
+        {
+            if (inputImage == null)
+                return null;
+
+            Bitmap bmp = new Bitmap(inputImage.Width, inputImage.Height);
+
+            for (int y = 0; y < inputImage.Height; y++)
+            {
+                for (int x = 0; x < inputImage.Width; x++)
+                {
+                    System.Drawing.Color pixel = inputImage.GetPixel(x, y);
+
+                    int tr = (int)(0.393 * pixel.R + 0.769 * pixel.G + 0.189 * pixel.B);
+                    int tg = (int)(0.349 * pixel.R + 0.686 * pixel.G + 0.168 * pixel.B);
+                    int tb = (int)(0.272 * pixel.R + 0.534 * pixel.G + 0.131 * pixel.B);
+
+                    int r = Math.Min(255, tr);
+                    int g = Math.Min(255, tg);
+                    int b = Math.Min(255, tb);
+
+                    bmp.SetPixel(x, y, System.Drawing.Color.FromArgb(r, g, b));
+                }
+            }
+
+            SetOutputImage(bmp);
             return outputImage;
         }
     }
